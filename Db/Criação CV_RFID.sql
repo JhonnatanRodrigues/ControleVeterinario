@@ -1,0 +1,26 @@
+USE [DB_ControleVeterinario]
+GO
+
+/****** Object:  Table [dbo].[CV_RFID]    Script Date: 12/11/2022 23:22:15 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[CV_RFID](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[RFID] [varchar](255) NOT NULL,
+	[EmUso] [bit] NOT NULL,
+	[dataCadastro] [datetime] NOT NULL,
+	[Ativo] [bit] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[CV_RFID] ADD  DEFAULT ((1)) FOR [Ativo]
+GO
+
