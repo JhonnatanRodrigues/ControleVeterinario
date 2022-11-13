@@ -22,7 +22,7 @@ namespace ControleVeterinario.Api.Controllers.RfIds
         }
 
         [HttpGet]
-        [Route("Leitor RFID/{codigoRFID}")]
+        [Route("LeitorRFID/{codigoRFID}")]
         public ApiResponse LerRFID([FromRoute] string codigoRFID)
         {
             try
@@ -39,7 +39,7 @@ namespace ControleVeterinario.Api.Controllers.RfIds
         }
 
         [HttpPost]
-        [Route("Inserir Novo RFID")]
+        [Route("InserirNovoRFID")]
         public ApiResponse InseririNovoRFID([FromBody] string codigoRFID)
         {
             try
