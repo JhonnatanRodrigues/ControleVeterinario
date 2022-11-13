@@ -12,8 +12,8 @@ namespace ControleVeterinario.Repositorio.Confgs.Alimentacoes
 
             builder.HasKey(p => p.Id);
 
-            builder.Property(p => p.CodigoRfId)
-                .HasColumnName("IdRFID")
+            builder.Property(p => p.CodigoAnimal)
+                .HasColumnName("IdAnimal")
                 .IsRequired();
 
             builder.Property(P => P.DataHora_ParoCome)
@@ -25,9 +25,13 @@ namespace ControleVeterinario.Repositorio.Confgs.Alimentacoes
                 .HasColumnType("DateTime")
                 .IsRequired();
 
-            builder.HasOne(p => p.RFID)
+            builder.Property(p => p.ParoCome)
+                .HasColumnName("ParoCome")
+                .IsRequired();
+
+            builder.HasOne(p => p.Animal)
                 .WithMany()
-                .HasForeignKey(p => p.CodigoRfId)
+                .HasForeignKey(p => p.CodigoAnimal)
                 .IsRequired();
         }
     }

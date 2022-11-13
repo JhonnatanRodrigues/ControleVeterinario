@@ -10,7 +10,6 @@ using System.ComponentModel;
 namespace ControleVeterinario.Api.Controllers.Animais
 {
     [ApiController]
-    [Category("teste")]
     [Route("api/Animal")]
     public class AnimalController : ControllerBase
     {

@@ -1,4 +1,5 @@
 using ControleVeterinario.Api.Controllers.MontadorMensagens;
+using ControleVeterinario.Aplicacao.Alimentacoes;
 using ControleVeterinario.Aplicacao.Animais;
 using ControleVeterinario.Aplicacao.RFIDs;
 using ControleVeterinario.Dominio.Alimentacoes;
@@ -27,6 +28,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<ContextoBanco>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
 builder.Services.AddScoped<IAplicRFID, AplicRFID>();
 builder.Services.AddScoped<IAplicAnimal, AplicAnimal>();
+builder.Services.AddScoped<IAplicAlimentacao, AplicAlimentacao>();
 builder.Services.AddScoped<IRepRFID, RepRFID>();
 builder.Services.AddScoped<IRepRaca, RepRaca>();
 builder.Services.AddScoped<IMontarMSG, MontarMSG>();
