@@ -47,7 +47,7 @@ namespace ControleVeterinario.Api.Controllers.Vacinacoes
             }
         }
 
-        [HttpPost]
+        [HttpGet]
         [Route("Listar")]
         public ResponseHttps Listar()
         {
