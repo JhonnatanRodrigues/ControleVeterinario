@@ -25,7 +25,7 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddDbContext<ContextoBanco>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
+builder.Services.AddDbContext<ContextoBanco>(options => options.UseSqlServer("Data Source=tcp:estudo-jhonnatan-azure.database.windows.net,1433;Initial Catalog=estudos;User Id=jrserafina@estudo-jhonnatan-azure;Password=Jhogame2002"));
 builder.Services.AddScoped<IAplicRFID, AplicRFID>();
 builder.Services.AddScoped<IAplicAnimal, AplicAnimal>();
 builder.Services.AddScoped<IAplicAlimentacao, AplicAlimentacao>();
