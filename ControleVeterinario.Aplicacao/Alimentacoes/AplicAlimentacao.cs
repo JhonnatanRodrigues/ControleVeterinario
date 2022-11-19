@@ -10,7 +10,9 @@ namespace ControleVeterinario.Aplicacao.Alimentacoes
         private readonly IRepCadastroAnimal _repCadastroAnimal;
         private readonly IRepAlimentacao _repAlimentacao;
 
-        public AplicAlimentacao(IRepRFID repRFID, IRepCadastroAnimal repCadastroAnimal, IRepAlimentacao repAlimentacao)
+        public AplicAlimentacao(IRepRFID repRFID, 
+            IRepCadastroAnimal repCadastroAnimal, 
+            IRepAlimentacao repAlimentacao)
         {
             _repRFID = repRFID;
             _repCadastroAnimal = repCadastroAnimal;

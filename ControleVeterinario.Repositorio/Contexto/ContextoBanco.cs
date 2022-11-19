@@ -3,11 +3,13 @@ using ControleVeterinario.Dominio.ControleVeterinarios;
 using ControleVeterinario.Dominio.RFIDs;
 using ControleVeterinario.Dominio.TipoAnimais;
 using ControleVeterinario.Dominio.TipoAnimais.Racas;
+using ControleVeterinario.Dominio.Vacinacoes;
 using ControleVeterinario.Repositorio.Confgs.Alimentacoes;
 using ControleVeterinario.Repositorio.Confgs.ControleVeterinarios;
 using ControleVeterinario.Repositorio.Confgs.RFIDs;
 using ControleVeterinario.Repositorio.Confgs.TipoAnimais;
 using ControleVeterinario.Repositorio.Confgs.TipoAnimais.Racas;
+using ControleVeterinario.Repositorio.Confgs.Vacinacoes;
 using Microsoft.EntityFrameworkCore;
 
 namespace ControleVeterinario.Repositorio.Contexto
@@ -26,11 +28,13 @@ namespace ControleVeterinario.Repositorio.Contexto
             modelBuilder.ApplyConfiguration(new RacaAnimalConfig());
             modelBuilder.ApplyConfiguration(new AlimentacaoConfig());
             modelBuilder.ApplyConfiguration(new CadastroAnimalConfig());
+            modelBuilder.ApplyConfiguration(new VacinacaoConfig());
         }
         public DbSet<RFID> RFIDs { get; set; }
         public DbSet<TipoAnimal> TipoAnimal { get; set; }
         public DbSet<RacaAnimal> RacaAnimal { get; set; }
         public DbSet<Alimentacao> Alimentacao { get; set; }
         public DbSet<CadastroAnimal> CadastroAnimal { get; set; }
+        public DbSet<Vacinacao> Vacinacao { get; set; }
     }
 }

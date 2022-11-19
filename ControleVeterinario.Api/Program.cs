@@ -1,6 +1,7 @@
 using ControleVeterinario.Aplicacao.Alimentacoes;
 using ControleVeterinario.Aplicacao.Animais;
 using ControleVeterinario.Aplicacao.RFIDs;
+using ControleVeterinario.Aplicacao.Vacinacoes;
 using ControleVeterinario.Dominio.Alimentacoes;
 using ControleVeterinario.Dominio.ControleVeterinarios;
 using ControleVeterinario.Dominio.RFIDs;
@@ -28,6 +29,7 @@ builder.Services.AddDbContext<ContextoBanco>(options => options.UseSqlServer(bui
 builder.Services.AddScoped<IAplicRFID, AplicRFID>();
 builder.Services.AddScoped<IAplicAnimal, AplicAnimal>();
 builder.Services.AddScoped<IAplicAlimentacao, AplicAlimentacao>();
+builder.Services.AddScoped<IAplicVacinacao, AplicVacinacao>();
 builder.Services.AddScoped<IRepRFID, RepRFID>();
 builder.Services.AddScoped<IRepRaca, RepRaca>();
 builder.Services.AddScoped<IRepTipoAnimal, RepTipoAnimal>();

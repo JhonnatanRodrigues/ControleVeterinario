@@ -21,12 +21,16 @@ namespace ControleVeterinario.Repositorio.Confgs.Vacinacoes
                 .HasColumnType("DateTime")
                 .IsRequired();
 
-            builder.Property(P => P.DataUltimaDose)
-                .HasColumnName("DataUltimaDose")
+            builder.Property(P => P.DataUltimaDoseAplicada)
+                .HasColumnName("DataUltimaDoseAplicada")
                 .HasColumnType("DateTime");
 
             builder.Property(p => p.QuantDose)
                 .HasColumnName("QuantDose")
+                .IsRequired();
+
+            builder.Property(p => p.QuantDoseAplicada)
+                .HasColumnName("QuantDoseAplicada")
                 .IsRequired();
 
             builder.Property(p => p.TipoVacinacao)
