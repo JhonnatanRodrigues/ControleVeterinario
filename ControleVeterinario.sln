@@ -5,11 +5,11 @@ VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ControleVeterinario.Api", "ControleVeterinario.Api\ControleVeterinario.Api.csproj", "{12386143-C4D2-4C65-974D-F62310A2B39C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControleVeterinario.Aplicacao", "ControleVeterinario.Aplicacao\ControleVeterinario.Aplicacao.csproj", "{ABE98101-3566-4584-BA97-4B63C9B4430C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ControleVeterinario.Aplicacao", "ControleVeterinario.Aplicacao\ControleVeterinario.Aplicacao.csproj", "{ABE98101-3566-4584-BA97-4B63C9B4430C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControleVeterinario.Dominio", "ControleVeterinario.Dominio\ControleVeterinario.Dominio.csproj", "{BD3FD64F-E4BA-4840-B138-0739D96C2D9F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ControleVeterinario.Dominio", "ControleVeterinario.Dominio\ControleVeterinario.Dominio.csproj", "{BD3FD64F-E4BA-4840-B138-0739D96C2D9F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControleVeterinario.Repositorio", "ControleVeterinario.Repositorio\ControleVeterinario.Repositorio.csproj", "{48D6E3E2-E809-41AE-A254-F16641AF1B3A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ControleVeterinario.Repositorio", "ControleVeterinario.Repositorio\ControleVeterinario.Repositorio.csproj", "{48D6E3E2-E809-41AE-A254-F16641AF1B3A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
