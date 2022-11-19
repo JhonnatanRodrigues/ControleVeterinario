@@ -16,6 +16,7 @@ using ControleVeterinario.Repositorio.Repositorios.TipoAnimais;
 using ControleVeterinario.Repositorio.Repositorios.TipoAnimais.Racas;
 using ControleVeterinario.Repositorio.Repositorios.Vacinacoes;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,7 +26,7 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddDbContext<ContextoBanco>(options => options.UseSqlServer("Data Source=tcp:estudo-jhonnatan-azure.database.windows.net,1433;Initial Catalog=estudos;User Id=jrserafina@estudo-jhonnatan-azure;Password=Jhogame2002"));
+builder.Services.AddDbContext<ContextoBanco>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
 builder.Services.AddScoped<IAplicRFID, AplicRFID>();
 builder.Services.AddScoped<IAplicAnimal, AplicAnimal>();
 builder.Services.AddScoped<IAplicAlimentacao, AplicAlimentacao>();
@@ -38,12 +39,6 @@ builder.Services.AddScoped<IRepVacinacao, RepVacinacao>();
 builder.Services.AddScoped<IRepCadastroAnimal, RepCadastroAnimal>();
 
 var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    
-}
 
 app.UseSwagger();
 app.UseSwaggerUI();
