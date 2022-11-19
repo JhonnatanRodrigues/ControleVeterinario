@@ -1,8 +1,6 @@
-﻿using ControleVeterinario.Api.Controllers.MontadorMensagens;
-using ControleVeterinario.Aplicacao.Alimentacoes;
-using FrozenForge.Apis;
+﻿using ControleVeterinario.Aplicacao.Alimentacoes;
+using ControleVeterinario.Dominio.Mensageria;
 using Microsoft.AspNetCore.Mvc;
-using System.ComponentModel;
 
 namespace ControleVeterinario.Api.Controllers.Alimentacoes
 {
@@ -10,60 +8,58 @@ namespace ControleVeterinario.Api.Controllers.Alimentacoes
     [Route("api/Alimentacao")]
     public class AlimentacaoController : ControllerBase
     {
-        private readonly IMontarMSG _msg;
         private readonly IAplicAlimentacao _aplicAlimentacao;
 
-        public AlimentacaoController(IMontarMSG msg, IAplicAlimentacao aplicAlimentacao)
+        public AlimentacaoController(IAplicAlimentacao aplicAlimentacao)
         {
-            _msg = msg;
             _aplicAlimentacao = aplicAlimentacao;
         }
 
         [HttpPost]
         [Route("FoiAlimentar")]
-        public ApiResponse FoiAlimentar([FromBody] string idRfid)
+        public ResponseHttps FoiAlimentar([FromBody] string idRfid)
         {
             try
             {
                 _aplicAlimentacao.FoiAlimentar(idRfid);
 
-                return _msg.RetSucesso();
+                return new ResponseHttps().RetSucesso();
             }
             catch (Exception ex)
             {
-                return _msg.RetError(ex.Message);
+                return new ResponseHttps().RetError(ex.Message);
             }
         }
 
-        [HttpPut]
+        [HttpPost]
         [Route("ParoAlimentar")]
-        public ApiResponse ParoAlimentar([FromBody] string idRfid)
+        public ResponseHttps ParoAlimentar([FromBody] string idRfid)
         {
             try
             {
                 _aplicAlimentacao.ParoAlimentar(idRfid);
 
-                return _msg.RetSucesso();
+                return new ResponseHttps().RetSucesso();
             }
             catch (Exception ex)
             {
-                return _msg.RetError(ex.Message);
+                return new ResponseHttps().RetError(ex.Message);
             }
         }
 
         [HttpGet]
         [Route("ListarAlimentacoes")]
-        public ApiResponse ListarAlimentacoes()
+        public ResponseHttps ListarAlimentacoes()
         {
             try
             {
                 var ret = _aplicAlimentacao.Listar();
 
-                return _msg.RetSucesso(ret);
+                return new ResponseHttps().RetSucesso(ret);
             }
             catch (Exception ex)
             {
-                return _msg.RetError(ex.Message);
+                return new ResponseHttps().RetError(ex.Message);
             }
         }
     }

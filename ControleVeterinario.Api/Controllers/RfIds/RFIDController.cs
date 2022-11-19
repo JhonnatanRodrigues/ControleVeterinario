@@ -1,9 +1,7 @@
-﻿using ControleVeterinario.Api.Controllers.MontadorMensagens;
-using ControleVeterinario.Aplicacao.RFIDs;
+﻿using ControleVeterinario.Aplicacao.RFIDs;
+using ControleVeterinario.Dominio.Mensageria;
 using ControleVeterinario.Dominio.RFIDs.Dtos;
-using FrozenForge.Apis;
 using Microsoft.AspNetCore.Mvc;
-using System.Net;
 
 namespace ControleVeterinario.Api.Controllers.RfIds
 {
@@ -12,111 +10,108 @@ namespace ControleVeterinario.Api.Controllers.RfIds
     public class RFIDController : ControllerBase
     {
         private readonly IAplicRFID _aplicRFID;
-        private readonly IMontarMSG _msg;
 
-        public RFIDController(IAplicRFID aplicRFID, 
-            IMontarMSG msg)
+        public RFIDController(IAplicRFID aplicRFID)
         {
             _aplicRFID = aplicRFID;
-            _msg = msg;
         }
 
         [HttpGet]
         [Route("LeitorRFID/{codigoRFID}")]
-        public ApiResponse LerRFID([FromRoute] string codigoRFID)
+        public ResponseHttps LerRFID([FromRoute] string codigoRFID)
         {
             try
             {
                 var ret = _aplicRFID.LerRFID(codigoRFID);
 
-                return _msg.RetSucesso(ret);
+                return new ResponseHttps().RetSucesso(ret);
             }
             catch (Exception ex)
             {
-                return _msg.RetError(ex.Message);
+                return new ResponseHttps().RetError(ex.Message);
             }
 
         }
 
         [HttpPost]
         [Route("InserirNovoRFID")]
-        public ApiResponse InseririNovoRFID([FromBody] string codigoRFID)
+        public ResponseHttps InseririNovoRFID([FromBody] string codigoRFID)
         {
             try
             {
                 _aplicRFID.InserirNovoRFID(codigoRFID);
 
-                return _msg.RetSucesso();
+                return new ResponseHttps().RetSucesso();
             }
             catch (Exception ex)
             {
-                return _msg.RetError(ex.Message);
+                return new ResponseHttps().RetError(ex.Message);
             }
             
         }
 
-        [HttpPut]
+        [HttpPost]
         [Route("AlterarRfid")]
-        public ApiResponse AlterarRFID([FromBody] AlterarRfidDto dto)
+        public ResponseHttps AlterarRFID([FromBody] AlterarRfidDto dto)
         {
             try
             {
                 _aplicRFID.AlterarRfid(dto);
 
-                return _msg.RetSucesso();
+                return new ResponseHttps().RetSucesso();
             }
             catch (Exception ex)
             {
-                return _msg.RetError(ex.Message);
+                return new ResponseHttps().RetError(ex.Message);
             }
 
         }
 
         [HttpGet]
         [Route("ListarRfids")]
-        public ApiResponse ListarRfids()
+        public ResponseHttps ListarRfids()
         {
             try
             {
                 var ret = _aplicRFID.ListarRfids();
 
-                return _msg.RetSucesso(ret);
+                return new ResponseHttps().RetSucesso(ret);
             }
             catch (Exception ex)
             {
-                return _msg.RetError(ex.Message);
+                return new ResponseHttps().RetError(ex.Message);
             }
         }
 
-        [HttpPut]
+        [HttpPost]
         [Route("AtivarRfid")]
-        public ApiResponse AtivarRfid(int codigoRFID)
+        public ResponseHttps AtivarRfid(int codigoRFID)
         {
             try
             {
                 _aplicRFID.AtivarRFID(codigoRFID);
 
-                return _msg.RetSucesso("RFID Ativo.");
+                return new ResponseHttps().RetSucesso("RFID Ativo.");
             }
             catch (Exception ex)
             {
-                return _msg.RetError(ex.Message);
+                return new ResponseHttps().RetError(ex.Message);
             }
         }
 
-        [HttpPut]
+        [HttpPost]
         [Route("DesativarRFID")]
-        public ApiResponse DesativarRFID(int codigoRFID)
+        public ResponseHttps DesativarRFID(int codigoRFID)
         {
             try
             {
                 _aplicRFID.DesativarRFID(codigoRFID);
 
-                return _msg.RetSucesso("RFID Desativado.");
+                return new ResponseHttps().RetSucesso("RFID Desativado.");
             }
             catch (Exception ex)
             {
-                return _msg.RetError(ex.Message);
+                return new ResponseHttps().RetError(ex.Message);
             }
         }
     }

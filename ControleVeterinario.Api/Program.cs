@@ -1,4 +1,3 @@
-using ControleVeterinario.Api.Controllers.MontadorMensagens;
 using ControleVeterinario.Aplicacao.Alimentacoes;
 using ControleVeterinario.Aplicacao.Animais;
 using ControleVeterinario.Aplicacao.RFIDs;
@@ -16,7 +15,6 @@ using ControleVeterinario.Repositorio.Repositorios.TipoAnimais;
 using ControleVeterinario.Repositorio.Repositorios.TipoAnimais.Racas;
 using ControleVeterinario.Repositorio.Repositorios.Vacinacoes;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,7 +30,6 @@ builder.Services.AddScoped<IAplicAnimal, AplicAnimal>();
 builder.Services.AddScoped<IAplicAlimentacao, AplicAlimentacao>();
 builder.Services.AddScoped<IRepRFID, RepRFID>();
 builder.Services.AddScoped<IRepRaca, RepRaca>();
-builder.Services.AddScoped<IMontarMSG, MontarMSG>();
 builder.Services.AddScoped<IRepTipoAnimal, RepTipoAnimal>();
 builder.Services.AddScoped<IRepAlimentacao, RepAlimentacao>();
 builder.Services.AddScoped<IRepVacinacao, RepVacinacao>();
