@@ -35,7 +35,8 @@ namespace ControleVeterinario.Aplicacao.RFIDs
             _repRFID.Inserir(new RFID
             {
                 CodigoRFID = codigoRFID,
-                DataCadastro = DateTime.Now
+                DataCadastro = DateTime.Now,
+                Ativo = true
             });
         }
 
