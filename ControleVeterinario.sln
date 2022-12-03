@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ControleVeterinario.Api", "ControleVeterinario.Api\ControleVeterinario.Api.csproj", "{12386143-C4D2-4C65-974D-F62310A2B39C}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ControleVeterinario.Aplicacao", "ControleVeterinario.Aplicacao\ControleVeterinario.Aplicacao.csproj", "{ABE98101-3566-4584-BA97-4B63C9B4430C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ControleVeterinario.Dominio", "ControleVeterinario.Dominio\ControleVeterinario.Dominio.csproj", "{BD3FD64F-E4BA-4840-B138-0739D96C2D9F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ControleVeterinario.Repositorio", "ControleVeterinario.Repositorio\ControleVeterinario.Repositorio.csproj", "{48D6E3E2-E809-41AE-A254-F16641AF1B3A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Controle_Veterinario.Api", "Controle_Veterinario.Api\Controle_Veterinario.Api.csproj", "{2B8ACF4E-15FB-49EC-90D5-FE70FF5A04A1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{12386143-C4D2-4C65-974D-F62310A2B39C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{12386143-C4D2-4C65-974D-F62310A2B39C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{12386143-C4D2-4C65-974D-F62310A2B39C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{12386143-C4D2-4C65-974D-F62310A2B39C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{ABE98101-3566-4584-BA97-4B63C9B4430C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{ABE98101-3566-4584-BA97-4B63C9B4430C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ABE98101-3566-4584-BA97-4B63C9B4430C}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -33,6 +29,10 @@ Global
 		{48D6E3E2-E809-41AE-A254-F16641AF1B3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{48D6E3E2-E809-41AE-A254-F16641AF1B3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{48D6E3E2-E809-41AE-A254-F16641AF1B3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B8ACF4E-15FB-49EC-90D5-FE70FF5A04A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B8ACF4E-15FB-49EC-90D5-FE70FF5A04A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B8ACF4E-15FB-49EC-90D5-FE70FF5A04A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B8ACF4E-15FB-49EC-90D5-FE70FF5A04A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
