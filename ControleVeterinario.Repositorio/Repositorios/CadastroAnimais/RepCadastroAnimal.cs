@@ -31,9 +31,10 @@ namespace ControleVeterinario.Repositorio.Repositorios.ControleVeterinarios
         public List<CadastroAnimal>? Listar()
         {
             return _Db.CadastroAnimal
-                .Include(p => p.Raca)
-                .Include(p => p.TipoAnimal)
-                .Include(p => p.RFID)
+                .Include("RFID")
+                .Include("TipoAnimal")
+                .Include("Raca")
+                .Include("Raca.TipoAnimal")
                 .ToList();
         }
 

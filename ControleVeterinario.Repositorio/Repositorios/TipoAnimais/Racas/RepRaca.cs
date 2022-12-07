@@ -22,7 +22,8 @@ namespace ControleVeterinario.Repositorio.Repositorios.TipoAnimais.Racas
 
         public List<RacaAnimal>? Listar()
         {
-            return _Db.RacaAnimal.Include(p => p.TipoAnimal).ToList();
+            return _Db.RacaAnimal
+                .Include(p => p.TipoAnimal).ToList();
         }
 
         public IQueryable<RacaAnimal>? Where(Expression<Func<RacaAnimal, bool>> func)

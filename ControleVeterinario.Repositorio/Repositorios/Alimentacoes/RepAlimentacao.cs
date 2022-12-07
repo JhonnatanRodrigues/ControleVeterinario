@@ -31,8 +31,10 @@ namespace ControleVeterinario.Repositorio.Repositorios.Alimentacoes
         public List<Alimentacao>? Listar()
         {
             return _Db.Alimentacao
-                .Include(p => p.Animal)
-                .ThenInclude(y => y.TipoAnimal)
+                .Include("Animal")
+                .Include("Animal.RFID")
+                .Include("Animal.TipoAnimal")
+                .Include("Animal.Raca")
                 .ToList();
         }
 
