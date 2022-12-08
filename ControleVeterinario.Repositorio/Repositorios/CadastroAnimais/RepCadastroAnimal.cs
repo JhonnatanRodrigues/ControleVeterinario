@@ -40,7 +40,11 @@ namespace ControleVeterinario.Repositorio.Repositorios.ControleVeterinarios
 
         public IQueryable<CadastroAnimal>? Where(Expression<Func<CadastroAnimal, bool>> func)
         {
-            return _Db.CadastroAnimal.Where(func);
+            return _Db.CadastroAnimal.Where(func)
+                .Include("RFID")
+                .Include("TipoAnimal")
+                .Include("Raca")
+                .Include("Raca.TipoAnimal");
         }
 
         public void SaveChanges()
