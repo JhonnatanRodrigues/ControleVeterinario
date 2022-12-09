@@ -6,7 +6,7 @@ namespace ControleVeterinario.Dominio.TipoAnimais.Racas
     {
         Task Inserir(RacaAnimal racaAnimal);
         List<RacaAnimal>? Listar();
-
+        void SaveChanges();
         IQueryable<RacaAnimal>? Where(Expression<Func<RacaAnimal, bool>> func);
     }
 }

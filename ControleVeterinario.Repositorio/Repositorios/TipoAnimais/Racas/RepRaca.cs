@@ -28,7 +28,13 @@ namespace ControleVeterinario.Repositorio.Repositorios.TipoAnimais.Racas
 
         public IQueryable<RacaAnimal>? Where(Expression<Func<RacaAnimal, bool>> func)
         {
-            return _Db.RacaAnimal.Where(func);
+            return _Db.RacaAnimal.Where(func)
+                                .Include("TipoAnimal");
+        }
+
+        public void SaveChanges()
+        {
+            _Db.SaveChanges();
         }
     }
 }

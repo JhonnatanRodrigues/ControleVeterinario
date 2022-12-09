@@ -1,7 +1,7 @@
 ﻿using ControleVeterinario.Aplicacao.Animais;
-using ControleVeterinario.Aplicacao.Animais.Dtos;
 using ControleVeterinario.Dominio.CadastroAnimais.Dto;
 using ControleVeterinario.Dominio.Mensageria;
+using ControleVeterinario.Dominio.TipoAnimais.Dto;
 using ControleVeterinario.Dominio.TipoAnimais.Racas.Dtos;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,6 +18,7 @@ namespace ControleVeterinario.Api.Controllers.Animais
             _aplicAnimal = aplicAnimal;
         }
 
+        #region Especie
         [HttpPost]
         [Route("CadastrarEspecie")]
         public ResponseHttps CadastrarEspecie([FromBody] string nomeEspecie)
@@ -50,13 +51,12 @@ namespace ControleVeterinario.Api.Controllers.Animais
         }
 
         [HttpGet]
-        [Route("BuscarEspecie/{id}/{especie}")]
-        public ResponseHttps BuscarEspecie([FromRoute] int id, [FromRoute] string especie)
+        [Route("BuscarEspecie/{id}")]
+        public ResponseHttps BuscarEspecie([FromRoute] int id)
         {
             try
             {
-                var dto = new FiltroEspeciesDto { Especie = especie, CodigoEspecie = id };
-                var ret = _aplicAnimal.BuscarEspecie(dto);
+                var ret = _aplicAnimal.BuscarEspecie(id);
                 return new ResponseHttps().RetSucesso(ret);
             }
             catch (Exception ex)
@@ -65,6 +65,23 @@ namespace ControleVeterinario.Api.Controllers.Animais
             }
         }
 
+        [HttpPost]
+        [Route("EditarEspecie")]
+        public ResponseHttps EditarEspecie([FromBody] EspecieDto especie)
+        {
+            try
+            {
+                _aplicAnimal.AlterarEspecie(especie);
+                return new ResponseHttps().RetSucesso();
+            }
+            catch (Exception ex)
+            {
+                return new ResponseHttps().RetError($"Erro ao buscar espécie: {ex.Message}");
+            }
+        }
+        #endregion
+
+        #region Raca
         [HttpPost]
         [Route("CadastrarRaca")]
         public ResponseHttps CadastrarRaca([FromBody] CadRacaAnimalDto dto)
@@ -95,6 +112,38 @@ namespace ControleVeterinario.Api.Controllers.Animais
             }
         }
 
+        [HttpGet]
+        [Route("BuscarRaca/{id}")]
+        public ResponseHttps BuscarRaca([FromRoute] int id)
+        {
+            try
+            {
+                var ret = _aplicAnimal.BuscarRaca(id);
+                return new ResponseHttps().RetSucesso(ret);
+            }
+            catch (Exception ex)
+            {
+                return new ResponseHttps().RetError($"Erro ao buscar animal: {ex.Message}");
+            }
+        }
+
+        [HttpPost]
+        [Route("EditarRaca")]
+        public ResponseHttps EditarRaca([FromBody] RacaDto racaDto)
+        {
+            try
+            {
+                _aplicAnimal.AlterarRaca(racaDto);
+                return new ResponseHttps().RetSucesso();
+            }
+            catch (Exception ex)
+            {
+                return new ResponseHttps().RetError($"Erro ao buscar espécie: {ex.Message}");
+            }
+        }
+        #endregion
+
+        #region Animal
         [HttpPost]
         [Route("CadastrarAnimais")]
         public ResponseHttps CadastrarAnimais([FromBody] CadAnimalDto dto)
@@ -124,5 +173,36 @@ namespace ControleVeterinario.Api.Controllers.Animais
                 return new ResponseHttps().RetError($"Erro ao listar animais: {ex.Message}");
             }
         }
+
+        [HttpGet]
+        [Route("BuscarAnimal/{id}")]
+        public ResponseHttps BuscarAnimal([FromRoute] int id)
+        {
+            try
+            {
+                var ret = _aplicAnimal.BuscarAnimal(id);
+                return new ResponseHttps().RetSucesso(ret);
+            }
+            catch (Exception ex)
+            {
+                return new ResponseHttps().RetError($"Erro ao buscar animal: {ex.Message}");
+            }
+        }
+
+        [HttpPost]
+        [Route("EditarAnimal")]
+        public ResponseHttps EditarAnimal([FromBody] AnimalDto animalDto)
+        {
+            try
+            {
+                _aplicAnimal.AlterarAnimal(animalDto);
+                return new ResponseHttps().RetSucesso();
+            }
+            catch (Exception ex)
+            {
+                return new ResponseHttps().RetError(ex.Message);
+            }
+        }
+        #endregion
     }
 }

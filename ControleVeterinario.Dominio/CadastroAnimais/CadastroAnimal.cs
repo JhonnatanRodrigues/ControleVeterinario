@@ -1,4 +1,5 @@
-﻿using ControleVeterinario.Dominio.RFIDs;
+﻿using ControleVeterinario.Dominio.CadastroAnimais.Dto;
+using ControleVeterinario.Dominio.RFIDs;
 using ControleVeterinario.Dominio.TipoAnimais;
 using ControleVeterinario.Dominio.TipoAnimais.Racas;
 
@@ -27,5 +28,17 @@ namespace ControleVeterinario.Dominio.ControleVeterinarios
         public RFID RFID{ get; set; }
         public TipoAnimal TipoAnimal { get; set; }
         public RacaAnimal Raca{ get; set; }
+
+        public void Mapear(AnimalDto animalDto)
+        {
+            CodigoRfId = animalDto.CodigoRfId;
+            CodigoTipoAnimal = animalDto.CodigoTipoAnimal;
+            CodigoRaca = animalDto.CodigoRaca;
+            DataNacimento = animalDto.DataNacimento;
+            DataAbat_Morte = animalDto.DataAbat_Morte;
+            Abat_Morte = animalDto.Abat_Morte;
+            Peso = animalDto.Peso;
+            Genero = animalDto.Genero;
+        }
     }
 }

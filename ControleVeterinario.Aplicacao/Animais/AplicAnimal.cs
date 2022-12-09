@@ -1,9 +1,9 @@
-﻿using ControleVeterinario.Aplicacao.Animais.Dtos;
-using ControleVeterinario.Dominio.CadastroAnimais.Dto;
+﻿using ControleVeterinario.Dominio.CadastroAnimais.Dto;
 using ControleVeterinario.Dominio.CadastroAnimais.Validacoes;
 using ControleVeterinario.Dominio.ControleVeterinarios;
 using ControleVeterinario.Dominio.RFIDs;
 using ControleVeterinario.Dominio.TipoAnimais;
+using ControleVeterinario.Dominio.TipoAnimais.Dto;
 using ControleVeterinario.Dominio.TipoAnimais.Racas;
 using ControleVeterinario.Dominio.TipoAnimais.Racas.Dtos;
 
@@ -27,29 +27,85 @@ namespace ControleVeterinario.Aplicacao.Animais
             _repCadastroAnimal = repCadastroAnimal;
         }
 
-        public void AlterarRaca(CadRacaAnimalDto dto)
+        public void AlterarRaca(RacaDto racaDto)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var raca = _repRaca.Where(x => x.Id == racaDto.Id).FirstOrDefault();
+
+                if (raca == null)
+                    throw new Exception($"Raça do código: '{racaDto.Id}', não encontrado.");
+
+                var especie = _repTipoAnimal.Where(x => x.Id == racaDto.CodigoTipoAnimal).FirstOrDefault();
+
+                if (especie == null)
+                    throw new Exception($"Espécie do código: '{racaDto.CodigoTipoAnimal}', não encontrado.");
+
+                raca.CodigoTipoAnimal = racaDto.CodigoTipoAnimal;
+                raca.Raca = racaDto.Raca;
+                raca.TipoAnimal = especie;
+
+                _repRaca.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
-        public void AlterarEspecie(string nomeEspecie)
+        public void AlterarEspecie(EspecieDto especieDto)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var especie = _repTipoAnimal.Where(x => x.Id == especieDto.Id).FirstOrDefault();
+
+                if(especie == null)
+                    throw new Exception($"Espécie do código: '{especieDto.Id}', não encontrado.");
+
+                especie.Tipo = especieDto.Tipo;
+
+                _repTipoAnimal.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public RacaAnimal BuscarRaca(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var raca = _repRaca.Where(x => x.Id == id).FirstOrDefault();
+
+                if (raca == null)
+                    throw new Exception($"Raça do código: '{id}', não encontrada.");
+
+                return raca;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
         }
 
-        public TipoAnimal BuscarEspecie(FiltroEspeciesDto dto)
+        public TipoAnimal BuscarEspecie(int id)
         {
-            if (dto.CodigoEspecie == null && dto.Especie == null)
-                throw new Exception("Não foi informado o filtro da espécie.");
+            try
+            {
+                var especie = _repTipoAnimal.Where(x => x.Id == id).FirstOrDefault();
 
-            return _repTipoAnimal.Where(p => (dto.CodigoEspecie != null && dto.CodigoEspecie != 0)
-                                                ? p.Id == dto.CodigoEspecie
-                                                : p.Tipo == dto.Especie).FirstOrDefault();
+                if (especie == null)
+                    throw new Exception($"Espécie do código: '{id}', não encontrado.");
+
+                return especie;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
         }
 
         public void CadastroRaca(CadRacaAnimalDto dto)
@@ -139,6 +195,45 @@ namespace ControleVeterinario.Aplicacao.Animais
         public List<CadastroAnimal> ListarAnimais()
         {
             return _repCadastroAnimal.Listar();
+        }
+
+        public CadastroAnimal BuscarAnimal(int id)
+        {
+            try
+            {
+                var animal = _repCadastroAnimal.Where(x => x.Id == id).FirstOrDefault();
+
+                if (animal == null)
+                    throw new Exception($"Animal do código: '{id}', não encontrado.");
+
+                return animal;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public void AlterarAnimal(AnimalDto animalDto)
+        {
+            try
+            {
+                var animal = _repCadastroAnimal.Where(x => x.Id == animalDto.Id).FirstOrDefault();
+
+                if (animal == null)
+                    throw new Exception($"Animal do código: '{animalDto.Id}', não encontrado.");
+
+                animal.Mapear(animalDto);
+
+                _repCadastroAnimal.SaveChanges();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
         }
     }
 }

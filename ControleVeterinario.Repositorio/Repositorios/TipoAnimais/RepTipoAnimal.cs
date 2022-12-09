@@ -28,5 +28,10 @@ namespace ControleVeterinario.Repositorio.Repositorios.TipoAnimais
         {
             return _Db.TipoAnimal.Where(func);
         }
+
+        public void SaveChanges()
+        {
+            _Db.SaveChanges();
+        }
     }
 }
